@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=eu-west-2
+    ports:
+      - "4572:4572"
+      - "8080:8080"
+
+  s3testsapp:
+    build:
+      context: .
+      dockerfile: ./src/Dockerfile
+    container_name: s3testsapp
+    depends_on:
+      - localstack
+    environment:
+      - AWS_REGION=eu-west-2
+      - AWS_ACCESS_KEY_ID=key
+      - AWS_SECRET_ACCESS_KEY=secret

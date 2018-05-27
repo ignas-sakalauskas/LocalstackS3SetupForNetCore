@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalstackS3SetupForNetCore", "src\LocalstackS3SetupForNetCore.csproj", "{A93EA8D6-1AA1-410B-A924-04ED656D33BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB35BC02-7D9B-4443-BBA7-69D75735A56C}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A93EA8D6-1AA1-410B-A924-04ED656D33BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93EA8D6-1AA1-410B-A924-04ED656D33BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93EA8D6-1AA1-410B-A924-04ED656D33BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93EA8D6-1AA1-410B-A924-04ED656D33BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {018A761E-9F41-4B60-BF36-76C6C0CF5759}
+	EndGlobalSection
+EndGlobal
