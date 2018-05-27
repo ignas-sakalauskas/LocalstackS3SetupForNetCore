@@ -1,0 +1,1 @@
+# LocalstackS3SetupForNetCore
