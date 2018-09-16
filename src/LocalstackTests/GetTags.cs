@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -28,11 +29,11 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
             };
 
             var result = await _client.GetObjectTaggingAsync(tagRequest);
-            
-            Console.WriteLine($"{DateTime.Now} - Retrieving tags - DONE. Tags:");
+
+            LogHelper.Log(LogLevel.INFO, "Retrieving tags - DONE. Tags:");
             foreach (var tag in result.Tagging)
             {
-                Console.WriteLine($"{DateTime.Now} - \tKey: {tag.Key}, Value: {tag.Value}");
+                LogHelper.Log(LogLevel.INFO, $"\tKey: {tag.Key}, Value: {tag.Value}");
             }
         }
     }

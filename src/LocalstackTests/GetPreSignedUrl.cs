@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -30,12 +31,12 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
                 Protocol = Protocol.HTTP
             });
             
-            Console.WriteLine($"{DateTime.Now} - Get pre-signed URL result: {result}");
+            LogHelper.Log(LogLevel.INFO, $"Get pre-signed URL result: {result}");
             using (var httpClient = new HttpClient())
             {
                 var response = await httpClient.GetAsync(result);
                 var contents = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"{DateTime.Now} - Testing the URL. Received File Contents: '{contents}'");
+                LogHelper.Log(LogLevel.INFO, $"Testing the URL. Received File Contents: '{contents}'");
             }
         }
     }

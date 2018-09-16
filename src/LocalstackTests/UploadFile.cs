@@ -6,6 +6,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -42,7 +43,7 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
                     };
 
                     await transferUtility.UploadAsync(uploadRequest);
-                    Console.WriteLine($"{DateTime.Now} - Upload File - DONE");
+                    LogHelper.Log(LogLevel.INFO, "Upload File - DONE");
                 }
             }
         }

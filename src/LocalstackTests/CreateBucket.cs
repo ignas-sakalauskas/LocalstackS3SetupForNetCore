@@ -1,7 +1,7 @@
-using System;
-using System.Threading.Tasks;
 using Amazon.S3;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
+using System.Threading.Tasks;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -19,7 +19,7 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
         public async Task Execute()
         {
             await _client.EnsureBucketExistsAsync(_settings.Bucket);
-            Console.WriteLine($"{DateTime.Now} - Create '{_settings.Bucket}' bucket - DONE");
+            LogHelper.Log(LogLevel.INFO, $"Create '{_settings.Bucket}' bucket - DONE");
         }
     }
 }

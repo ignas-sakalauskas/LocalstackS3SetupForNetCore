@@ -1,8 +1,8 @@
-using System;
-using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
+using System.Threading.Tasks;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -24,7 +24,7 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
                 BucketName = _settings.Bucket
             });
 
-            Console.WriteLine($"{DateTime.Now} - Location request status: {result.HttpStatusCode}");
+            LogHelper.Log(LogLevel.INFO, $"Location request status: {result.HttpStatusCode}");
         }
     }
 }

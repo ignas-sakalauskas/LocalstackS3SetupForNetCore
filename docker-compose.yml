@@ -1,13 +1,18 @@
-version: "3"
+version: "3.7"
 
 services:
-
-  localstack:
+        
+  localstack-s3test:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 200M
     image: localstack/localstack
-    container_name: localstack
+    container_name: localstack-s3test
     environment:
       - SERVICES=s3
-      - DEFAULT_REGION=eu-west-2
+      - AWS_DEFAULT_REGION=eu-west-2
     ports:
       - "4572:4572"
       - "8080:8080"
@@ -18,7 +23,7 @@ services:
       dockerfile: ./src/Dockerfile
     container_name: s3testsapp
     depends_on:
-      - localstack
+      - localstack-s3test
     environment:
       - AWS_REGION=eu-west-2
       - AWS_ACCESS_KEY_ID=key

@@ -1,9 +1,10 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using LocalstackS3SetupForNetCore.Configuration;
+using LocalstackS3SetupForNetCore.Infrastructure.Logging;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace LocalstackS3SetupForNetCore.LocalstackTests
 {
@@ -29,11 +30,11 @@ namespace LocalstackS3SetupForNetCore.LocalstackTests
             };
 
             var result = await _client.GetObjectAsync(request);
-            Console.WriteLine($"{DateTime.Now} - Download File Status: {result.HttpStatusCode}");
+            LogHelper.Log(LogLevel.INFO, $"Download File Status: {result.HttpStatusCode}");
             using (var sr = new StreamReader(result.ResponseStream))
             {
                 var contents = await sr.ReadToEndAsync();
-                Console.WriteLine($"{DateTime.Now} - Downloaded File Contents: '{contents}'");
+                LogHelper.Log(LogLevel.INFO, $"Downloaded File Contents: '{contents}'");
             }
         }
     }
