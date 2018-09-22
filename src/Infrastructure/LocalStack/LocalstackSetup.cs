@@ -32,8 +32,7 @@ namespace LocalstackS3SetupForNetCore.Infrastructure.LocalStack
 
             var request = new GraphRequest
             {
-                AwsEnvironment = "dev",
-                NameFilter = _settings.Bucket
+                AwsEnvironment = "dev"
             };
 
             while (!cts.IsCancellationRequested)
@@ -50,14 +49,14 @@ namespace LocalstackS3SetupForNetCore.Infrastructure.LocalStack
                         if (response.IsSuccessStatusCode)
                         {
                             await _s3Client.EnsureBucketExistsAsync(_settings.Bucket);
-                            LogHelper.Log(LogLevel.INFO, $"Bucket {_settings.Bucket} exists!");
+                            LogHelper.Log(LogLevel.INFO, "LocalStack S3 ready!");
                             break;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Log(LogLevel.WARN, $"Check response: {ex.Message}");
+                    LogHelper.Log(LogLevel.WARN, $"Health check response: {ex.Message}");
                     await Task.Delay(1000, cts.Token);
                 }
             }
