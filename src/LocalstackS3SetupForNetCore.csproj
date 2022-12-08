@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="3.3.31.11" />
     <PackageReference Include="Lamar" Version="2.0.4" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
   <ItemGroup>
     <None Update="uploadme.txt">
